@@ -95,8 +95,6 @@ const styles = StyleSheet.create({
     right: 0,
     top: 0,
     height: "100%",
-
-    // flex:1
   },
   imagenexuz: {
     width: "80%",

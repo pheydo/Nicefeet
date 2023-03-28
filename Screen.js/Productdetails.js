@@ -189,6 +189,7 @@ const Productdetails = ({ route, navigation }) => {
           style={{
             flexDirection: "row",
             marginTop: 60,
+            
             justifyContent: "space-between",
             marginHorizontal: 15,
           }}

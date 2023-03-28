@@ -5,6 +5,7 @@ import {
   Image,
   TouchableOpacity,
   ImageBackground,
+  Button,
 } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -105,7 +106,12 @@ const Productdetail = ({ route, navigation }) => {
             }}
           >
             <Text style={{ alignSelf: "center" }}>44</Text>
+            
           </TouchableOpacity>
+
+          <Button>
+            <Image/>
+          </Button>
 
           <TouchableOpacity
             style={{

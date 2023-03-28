@@ -30,7 +30,7 @@ const Home = ({ navigation }) => {
       }}
     >
       <View style={{ marginLeft: 20, marginTop: 30 }}>
-        <Text>Nike</Text>
+        <Text  onPress={color="red"}  >Nike</Text>
         <Text>Free Metcon</Text>
         <Text>$1.2</Text>
       </View>
@@ -56,8 +56,8 @@ const Home = ({ navigation }) => {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <StatusBar barStyle = "dark-content" hidden = {false} backgroundColor = "transparent " translucent = {true}/>
+    <SafeAreaView  style={{  flex: 1, }}>
+      <StatusBar barStyle = "dark-content" hidden = {false} backgroundColor="dark" translucent = {true}/>
 
       <ScrollView>
         <View style={styles.search}>
