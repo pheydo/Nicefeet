@@ -7,7 +7,7 @@ import {
   Image,
   Dimensions
 } from "react-native";
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import { SafeAreaView } from "react-native-safe-area-context";
 import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
@@ -16,10 +16,28 @@ import { RunningDATA } from "../Component.js/RunningDATA";
 const { height, width } = Dimensions.get("window")
 
 
+
+
+
 const Cart = ({ navigation }) => {
+
+  // const [screenWidth, setScreenWidth] = useState(Dimensions.get('window').width);
+
+  // useEffect(() => {
+  //   const updateLayout = () => {
+  //     setScreenWidth(Dimensions.get('window').width);
+  //   };
+
+  //   Dimensions.addEventListener('change', updateLayout);
+
+  //   return () => {
+  //     Dimensions.removeEventListener('change', updateLayout);
+  //   };
+  // });
+
   const RunShoe = ({ item, }) => (
 
-    <View>
+    <View style={{marginHorizontal:15}}>
         <TouchableOpacity   
         onPress={()=>navigation.navigate("Productdetails",{...item})}
         >

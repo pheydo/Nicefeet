@@ -5,10 +5,12 @@ import {
   Image,
   TouchableOpacity,
   FlatList,
+  Platform, Dimensions
 } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { DATA } from "../Component.js/DATA";
+const { height, width } = Dimensions.get("window")
 
 const Niketypes = [
   { Niketype: "casual" },
@@ -40,8 +42,9 @@ export default function Nike({ navigation }) {
   const nike = ({ item }) => (
     <View
       style={{
-        height: 180,
+        height: Platform.OS === 'ios' ? 180 : 150,
         marginHorizontal: 15,
+        marginVertical: Platform.OS === 'ios' ? 20 : 0,
         width: 250,
         flexDirection: "row",
         backgroundColor: "#F0FFF0",
@@ -49,13 +52,13 @@ export default function Nike({ navigation }) {
         justifyContent: "space-between",
       }}
     >
-      <View style={{ marginLeft: 20, marginTop: 30 }}>
-        <Text>Nike</Text>
+      <View style={{ marginLeft: 20, justifyContent:"center" }}>
+        <Text >Nike</Text>
         <Text>Free Metcon</Text>
         <Text>$1.2</Text>
       </View>
 
-      <View style={{}}>
+      <View style={{justifyContent:"center"}}>
         <Image
           source={item.image}
           style={{ height: 160, width: 150 }}
@@ -66,7 +69,7 @@ export default function Nike({ navigation }) {
   );
 
   return (
-    <View style={{ flex: 1, marginTop: 10 }}>
+    <View style={styles.myComponent}>
       <View style={styles.card1}>
         <View style={{ padding: 10 }}>
           <Image
@@ -168,16 +171,22 @@ export default function Nike({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+
+  myComponent: {
+    width: Dimensions.get('window').width * 1, // Set the width to 80% of the screen width
+    height: Platform.OS === 'ios' ? 200 : 150, // Set the height to 100 on iOS and 80 on Android
+    
+  },
   card1: {
-    marginTop: 40,
+    marginTop:Platform.OS === 'ios' ? 60 : 40,
     height: 180,
-    width: 330,
+    width:width*0.9,
     backgroundColor: "#28282B",
     borderRadius: 15,
     flexDirection: "row",
     alignSelf: "center",
   },
-  image1: { height: 60, marginTop: 20, width: 150 },
+  image1: { height: 60, marginTop: Platform.OS === 'ios' ? 20 : 30, width: 150 },
   image2: { height: 250, width: 170, alignSelf: "center" },
   purpose: {
     height: 50,
@@ -188,19 +197,13 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     left: 10,
     marginRight: 10,
-    marginTop: 10,
+    marginTop: 20,
   },
   purposetext: {
     fontSize: 15,
     fontWeight: "bold",
   },
 
-  nikeshoes: {
-    height: 200,
-    width: 250,
-    borderWidth: 2,
-    backgroundColor: "red",
-  },
   devineActive: {
     backgroundColor: "#F0FFF0",
   },

@@ -1,80 +1,41 @@
-import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
-import { FlatList, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+// 
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
 
-const listTab = [{ mandem: "pink" }, { mandem: "blue" }, { mandem: "black" }, { mandem: "huop" }];
+const ResponsiveComponent = () => {
+  const [screenWidth, setScreenWidth] = useState(Dimensions.get('window').width);
 
-export default function Profile() {
-  const [mandem, setmandem] = useState("ALL");
+  useEffect(() => {
+    const updateLayout = () => {
+      setScreenWidth(Dimensions.get('window').width);
+    };
 
-  const setmandemFilter = (mandem) => {
-    setmandem(mandem);
-  };
+    Dimensions.addEventListener('change', updateLayout);
 
+    return () => {
+      Dimensions.removeEventListener('change', updateLayout);
+    };
+  });
 
-  const Nikepurpose=({item})=>(
-
-
-
-    <View style={{justifyContent:"center"}}>
-
-      <TouchableOpacity
-      style={[styles.devine, mandem === item.mandem && styles.devineActive]}
-      onPress={() => setmandemFilter(item.mandem)}
-      >
-        <Text>{item.mandem}</Text>
-      </TouchableOpacity>
-    </View>
-  )
-
-
- 
-
-  
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: 10,
+      width: screenWidth < 600 ? '100%' : '50%',
+    },
+    text: {
+      fontSize: screenWidth < 600 ? 18 : 24,
+      fontWeight: 'bold',
+    },
+  });
 
   return (
     <View style={styles.container}>
-      <View styles={styles.listTab}>
-       <FlatList
-       horizontal
-       data={listTab}
-       renderItem={Nikepurpose}
-       />
-      </View>
-<FlatList
-
-
-
-
-
-/>
-
+      <Text style={styles.text}>This is a responsive component</Text>
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  listTab: {
-    flexDirection: "row",
-    alignSelf: "center",
-  },
-
-  devine: {
-    justifyContent: "center",
-    flexDirection:"row",
-    borderWidth:0.5,
-    padding: 10,
-    width:100
-  },
-
-  devineActive:{
-backgroundColor:"green"
-  }
-});
+export default ResponsiveComponent;

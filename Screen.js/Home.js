@@ -56,8 +56,8 @@ const Home = ({ navigation }) => {
   }
 
   return (
-    <SafeAreaView  style={{  flex: 1, }}>
-      <StatusBar barStyle = "dark-content" hidden = {false} backgroundColor="dark" translucent = {true}/>
+    <SafeAreaView  style={{ flex:1  }}>
+      <StatusBar barStyle = "dark-content" hidden = {false} backgroundColor="white" translucent = {true}/>
 
       <ScrollView>
         <View style={styles.search}>
@@ -123,7 +123,7 @@ const Home = ({ navigation }) => {
             </TouchableOpacity>
           </View>
         </View>
-        <View style={{marginHorizontal:8,}}>
+        <View style={{marginHorizontal:10,}}>
           <View style={styles.brand}>
             <View style={styles.brands}>
               <TouchableOpacity onPress={() => navigation.navigate("nike")}>
@@ -237,7 +237,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   search: {
-    backgroundColor: "#F5DB7B",
+    backgroundColor: "white",
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
   },
